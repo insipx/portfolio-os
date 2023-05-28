@@ -13,3 +13,10 @@ pub const NONE: Color = Color::rgb(1.0, 1.0, 1.0);
 
 // icons
 pub const FOLDER_ICON: &str = "os/places/48/folder.png";
+pub const SYSTEM_SETTINGS_ICON: &str = "os/apps/48/systemsettings.png";
+pub const SYSTEM_PREFERENCES_DISPLAY_ICON: &str = "os/apps/48/system-preferences-display.png";
+pub const SYSTEM_FILE_MANAGER_ICON: &str = "os/apps/48/system-file-manager.png";
+pub const TERMINAL_ICON: &str = "os/apps/48/utilities-terminal.png";
+
+// Wallpapers
+pub const WALLPAPER_WINDOWS95: &str = "wallpapers/windows95.jpg";
