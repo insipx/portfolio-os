@@ -1,6 +1,6 @@
 # Portfolio OS
 
-### A mock retro-OS inspired by NeXTSTEP. Available in WASM for the browser :)
+### A mock retro-OS inspired by NeXTSTEP and built with [Bevy](https://github.com/bevyengine/bevy). Available in WASM for the browser :)
 
 ![What it looks like so far](https://i.imgur.com/Is0x3wr.png)
 
