@@ -1,6 +1,7 @@
 //! A system for dragging and dropping OsButtons within their parent containers.
 // TODO: Fix being allowed to drag icons off-screen.
 // TODO: Add delay to when dragging begins and/or check if cursor has moved at all since click (add
+// TODO: Because icons are organized by flexbox, they automatically re-arrange themselves...
 // states to [`ClickedState`])
 
 use bevy::{prelude::*, window::PrimaryWindow};

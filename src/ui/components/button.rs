@@ -47,14 +47,23 @@ impl CoolIcon {
 /// A [`Button`] without a BackgroundColor
 #[derive(Bundle, Default)]
 pub struct OsButtonBundle {
+    /// The [`Node`] component
     pub node: Node,
+    /// The [`Style`] component
     pub style: Style,
+    /// The [`Button`] component
     pub interaction: Interaction,
+    /// The [`FocusPolicy`] component
     pub focus_policy: FocusPolicy,
+    /// The [`Transform`] component
     pub transform: Transform,
+    /// The [`GlobalTransform`] component
     pub global_transform: GlobalTransform,
+    /// The [`Draw`] component
     pub visibility: Visibility,
+    /// The [`ComputedVisibility`] component
     pub computed_visibility: ComputedVisibility,
+    /// The [`ZIndex`] component
     pub z_index: ZIndex,
     /// Marker component for OsButton
     pub os_icon: OsButton,
