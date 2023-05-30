@@ -1,7 +1,7 @@
 //! A Pretty Cool Button
 use bevy::prelude::*;
 use bevy::ui::FocusPolicy;
-use crate::primitives::ui::{FOLDER_ICON, FONT_REGULAR, NONE};
+use crate::primitives::ui::NORMAL_BUTTON;
 
 /// Marker Component for an OsIcon
 #[derive(Component, Default)]
@@ -9,6 +9,13 @@ pub struct OsButton;
 
 #[derive(Component, Default)]
 pub struct OsIcon;
+
+#[derive(Component, PartialEq, Default)]
+pub enum ClickedState {
+    #[default]
+    Idle,
+    Dragging,
+}
 
 #[derive(Bundle, Default)]
 pub struct CoolIcon {
@@ -25,7 +32,7 @@ impl CoolIcon {
                     size: Size::new(Val::Px(48.0), Val::Px(48.0)),
                     ..default()
                 },
-                background_color: NONE.into(),
+                background_color: NORMAL_BUTTON.into(),
                 image: UiImage {
                     texture: icon,
                     ..default()
@@ -49,7 +56,10 @@ pub struct OsButtonBundle {
     pub visibility: Visibility,
     pub computed_visibility: ComputedVisibility,
     pub z_index: ZIndex,
-    pub os_icon: OsButton
+    /// Marker component for OsButton
+    pub os_icon: OsButton,
+    /// whether the button is clicked or not.
+    pub clicked_state: ClickedState,
 }
 
 
