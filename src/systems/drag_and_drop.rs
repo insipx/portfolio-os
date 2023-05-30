@@ -2,6 +2,7 @@
 use bevy::{prelude::*, window::PrimaryWindow};
 use crate::ui::prelude::*;
 
+/// System allowing [`OsButton`]'s to be dragged-and-dropped 
 pub fn drag_and_drop_system(
     window: Query<&Window, With<PrimaryWindow>>,
     camera_q: Query<(&Camera, &GlobalTransform), With<Camera>>,
@@ -55,8 +56,7 @@ pub fn drag_and_drop_system(
     }
 }
 
-// TODO: Figure out when this would return 0
-/// Get the cursor position in the window
+/// Get the cursor position in the [`Window`]
 fn cursor_position(window: &Window, camera_q: Query<(&Camera, &GlobalTransform), With<Camera>>) -> Vec2 {
     // get the camera info and transform
     // assuming there is exactly one main camera entity, so query::single() is OK
@@ -76,6 +76,7 @@ fn cursor_position(window: &Window, camera_q: Query<(&Camera, &GlobalTransform),
     }
 }
 
+/// Convert a cursor position to a [`UiRect`] position
 fn cursor_position_to_ui_rect(window: &Window, cursor_position: Vec2) -> UiRect {
     let (screen_height, screen_width) = (window.height(), window.width());
     let new_x = cursor_position.x + (screen_width) / 2f32;
