@@ -1,11 +1,11 @@
 use bevy::{prelude::*, winit::WinitSettings};
-mod ui;
 mod primitives;
 mod systems;
+mod ui;
 
-use self::ui::prelude::*;
 use self::primitives::ui::*;
 use self::systems::*;
+use self::ui::prelude::*;
 
 fn main() {
     App::new()
@@ -21,10 +21,7 @@ fn main() {
 }
 
 fn button_system(
-    mut interaction_query: Query<
-        (&Interaction, &Children),
-        (Changed<Interaction>, With<OsButton>),
-    >,
+    mut interaction_query: Query<(&Interaction, &Children), (Changed<Interaction>, With<OsButton>)>,
     mut icon_query: Query<&mut BackgroundColor, With<OsIcon>>,
 ) {
     for (interaction, children) in &mut interaction_query {
@@ -77,11 +74,10 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
             ..default()
         })
         .with_children(|parent| {
-            spawn_folder(parent, &font, &folder_icon, "prawn");
+            spawn_folder(parent, &font, &folder_icon, "yuh");
             spawn_folder(parent, &font, &system_settings_icon, "Settings");
             spawn_folder(parent, &font, &system_preferences_display_icon, "Display");
             spawn_folder(parent, &font, &system_file_manager_icon, "Files");
             spawn_folder(parent, &font, &terminal_icon, "Terminal");
         });
 }
-

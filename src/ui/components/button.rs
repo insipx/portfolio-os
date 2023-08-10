@@ -1,7 +1,7 @@
 //! A Pretty Cool Button
+use crate::primitives::ui::NORMAL_BUTTON;
 use bevy::prelude::*;
 use bevy::ui::FocusPolicy;
-use crate::primitives::ui::NORMAL_BUTTON;
 
 /// Marker Component for an OsIcon
 #[derive(Component, Default)]
@@ -69,42 +69,57 @@ pub struct OsButtonBundle {
     pub os_icon: OsButton,
     /// whether the button is clicked or not.
     pub clicked_state: ClickedState,
+    /// how long the click lasted
+    pub time_since_click: ButtonTimer,
 }
 
+#[derive(Component, Default)]
+pub struct ButtonTime {
+    timer: Timer,
+}
 
 /// spawns a container with a folder icon and some text
-pub fn spawn_folder(commands: &mut ChildBuilder, font: &Handle<Font>, icon: &Handle<Image>, name: &str) {
-    commands.spawn(OsButtonBundle {
-        style: Style {
-            size: Size::new(Val::Px(60.0), Val::Px(80.0)),
-            align_items: AlignItems::Center,
-            justify_content: JustifyContent::FlexStart,
-            flex_direction: FlexDirection::Column,
-            margin: UiRect {
-                left: Val::Px(2.0),
-                right: Val::Px(2.0),
-                top: Val::Px(2.0),
-                bottom: Val::Px(2.0),
-            },
-            align_content: AlignContent::FlexStart,
-            ..default()
-        },
-        ..default()
-    })
-    .with_children(|parent| {
-        parent.spawn(CoolIcon::new(icon.clone()));
-        parent.spawn(TextBundle {
-            text: Text::from_section(name, TextStyle {
-                font: font.clone(),
-                font_size: 12.0,
-                color: Color::rgb(0.9, 0.9, 0.9),
-            }),
+pub fn spawn_folder(
+    commands: &mut ChildBuilder,
+    font: &Handle<Font>,
+    icon: &Handle<Image>,
+    name: &str,
+) {
+    commands
+        .spawn(OsButtonBundle {
             style: Style {
-                max_size: Size::new(Val::Px(60.0), Val::Undefined),
+                size: Size::new(Val::Px(60.0), Val::Px(80.0)),
+                align_items: AlignItems::Center,
+                justify_content: JustifyContent::FlexStart,
+                flex_direction: FlexDirection::Column,
+                margin: UiRect {
+                    left: Val::Px(2.0),
+                    right: Val::Px(2.0),
+                    top: Val::Px(2.0),
+                    bottom: Val::Px(2.0),
+                },
                 align_content: AlignContent::FlexStart,
                 ..default()
             },
             ..default()
+        })
+        .with_children(|parent| {
+            parent.spawn(CoolIcon::new(icon.clone()));
+            parent.spawn(TextBundle {
+                text: Text::from_section(
+                    name,
+                    TextStyle {
+                        font: font.clone(),
+                        font_size: 12.0,
+                        color: Color::rgb(0.9, 0.9, 0.9),
+                    },
+                ),
+                style: Style {
+                    max_size: Size::new(Val::Px(60.0), Val::Undefined),
+                    align_content: AlignContent::FlexStart,
+                    ..default()
+                },
+                ..default()
+            });
         });
-    });
 }
